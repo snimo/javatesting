@@ -14,14 +14,21 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
-// Create a RestController in Spring Boot to create a RESTful web service
+// Ver que se usa en controller - y no un rest-controller
 @Controller
 @RequestMapping("/view")
 public class CustomerViewController {
 
+   // Redirigir a otra pagina
    @GetMapping("/hello")
    public String printHello() {
       return "redirect:http://localhost:8085/api/customer/getAll";
+   }
+
+   // Devolver el cuerpo del HTML pata que sea renderizado en la pagina
+   @RequestMapping(value = "/prueba1", method = RequestMethod.GET)
+   public @ResponseBody String responseBody() {
+      return "<h1>prueba1</h1>";
    }
 
 
