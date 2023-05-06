@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
@@ -77,13 +78,26 @@ public class CustomerController {
     }
 
     // Get All Products
-    @GetMapping("/customer/getAll")
+    @GetMapping(value={"/customer/getAll","/customer/getAll1"})
     public ResponseEntity<List<Customer>> getCustomers() {
         try {
             return ResponseEntity.ok(customerService.getCustomers());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @GetMapping(value="/customer/getCustomers")
+    public String getCustomers2() {
+        return "redirect:/api/customer/getAll";
+    }
+
+    @GetMapping(value = "/external-redirect")
+    public void method(HttpServletResponse response) {
+
+        String externalUrl = "http://www.google.com";
+        response.setStatus(302);
+        response.setHeader("Location", externalUrl);
     }
 
 
