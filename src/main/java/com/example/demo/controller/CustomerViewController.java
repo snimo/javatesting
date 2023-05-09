@@ -31,6 +31,12 @@ public class CustomerViewController {
       return "<h1>prueba1</h1>";
    }
 
+   @GetMapping("/error500")
+   public void error500() {
+      double a = 1 / 0;
+      System.out.println(a);
+   }
+
 
 }
 
