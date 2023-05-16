@@ -38,7 +38,7 @@ public class CustomerController {
 
     }
 
-    //Modify the saveCustomer method to return a ResponseEntity
+    //Modify the saveCustomer method to return a ResponseEntitykk
     @PutMapping("/customer/update")
     public ResponseEntity<Customer> modifyCustomer(@RequestBody Customer customer) {
         try {
